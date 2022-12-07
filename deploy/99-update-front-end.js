@@ -7,7 +7,7 @@ const FRONT_END_ADDRESSES_FILE = FRONT_END_FOLDER + "/contractAddresses.json";
 const FRONT_END_ABI_FILE = FRONT_END_FOLDER + "/smartLottery.json";
 
 module.exports = async function () {
-  if (process.env.UPDATE_FRONT_END) {
+  if (process.env.UPDATE_FRONT_END == "true") {
     await updateContractAddresses();
     await updateAbi();
   }

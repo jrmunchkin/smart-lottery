@@ -1,6 +1,6 @@
 # Smart Lottery contract (SOLIDITY)
 
-**This is the SOLIDITY version of the repository, VYPER version is coming soon...**
+**This is the SOLIDITY version of the repository, to switch to the VYPER version change to branch vyper** :point_up:
 
 This is a repository to work with and create a lottery game name Smart Lottery in a javascript environment using hardhat.
 This is a backend repository, it also work with a [frontend repository](https://github.com/jrchain/smart-lottery-front-end). However you absolutly can use this repository without the frontend part.
@@ -70,7 +70,7 @@ You also can work with [Infura](https://infura.io/).
 
 You can find your `PRIVATE_KEY` from your ethereum wallet like [metamask](https://metamask.io/).
 
-You'll also want an [Etherscan API Key](https://etherscan.io/apis) to verify your smart contracts. Set it here `ETHERSCAN_API_KEY`.
+You'll also want an [Etherscan API Key](https://etherscan.io/apis) to verify your smart contracts. Set it here `ETHERSCAN_API_KEY`. Also set `VERIFY` to true to verify it.
 
 If you want to use it with the [frontend repository](https://github.com/jrchain/smart-lottery-front-end), You also can clone it and set your frontend path `FRONT_END_FOLDER`
 
