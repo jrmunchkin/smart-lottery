@@ -19,7 +19,7 @@ const { assert, expect } = require("chai");
         await deployments.fixture(["all"]);
         smartLottery = await ethers.getContract("SmartLottery", deployer);
         vrfCoordinatorV2Mock = await ethers.getContract(
-          "VRFCoordinatorV2Mock",
+          "VRFCoordinatorV2MockOverride",
           deployer
         );
         lotteryEntranceFee = await smartLottery.getEntranceFee();

@@ -7,7 +7,9 @@ This is a backend repository, it also work with a [frontend repository](https://
 
 ## Summary
 
-The Smart Lottery contract creates a simple lottery which will picked a random winner once the lottery end.
+### Version 1
+
+The Smart Lottery contract V1 creates a simple lottery which will picked a random winner once the lottery end.
 The constructor takes an interval (time of duration of the lottery) and and usd entrance fee (entrance fee in dollars).
 
 This contract implements :
@@ -23,8 +25,29 @@ The Smart Lottery allow you to :
 - `getWinner`: Get any winner of a previous lottery thanks to the lottery number.
 - `getLotteryBalance`: Get any pot size of a previous lottery thanks to the lottery number.
 
+### Version 2
+
+The Smart Lottery contract V2 creates a ticket lottery which will picked a random winning ticket once the lottery end.
+The constructor takes an interval (time of duration of the lottery), an usd entrance fee (entrance fee in dollars) and a prize distribution corresponding on the percentage of each pots.
+
+This contract implements :
+
+- Chainlink Keeper to trigger when the lottery must end.
+- Chainlink VRF to pick a random winner when the lottery ends.
+- Chainlink price feed to know the ticket fee value in ETH.
+
+The Smart Lottery V2 allow you to :
+
+- `buyTickets`: Buy tickets to play the lottery by paying ticket fees (USD convert to ETH) - Max 10 tickets.
+- `revealWinningTickets`: Reveal if you have winning tickets among all the tickets you buy.
+- `claimRewards`: Get rewards of the previous lotteries where you get matching tickets.
+- `getWinningTicket`: Get any winning tickets of a previous lottery thanks to the lottery number.
+- `getLotteryBalance`: Get any pot size of a previous lottery thanks to the lottery number.
+
 - [Smart Lottery](#smart-lottery-contract)
   - [Summary](#summary)
+    - [Version 1](#version-1)
+    - [Version 2](#version-2)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Testnet Development](#testnet-development)
@@ -97,9 +120,11 @@ You'll also need testnet goerli ETH if you want to deploy on goerli tesnet. You 
 
 Feel free to change the interval variable in the helper-hardhat-config.js if you want your lottery interval to be more than 60 seconds.
 
-You also can change the value of usdEntranceFee for setting your lottery entrance fee.
+You also can change the value of usdEntranceFee for setting your lottery entrance fee or ticket fee for V2.
 
-To deploy the contract locally
+For the lottery V2 you also can set the prizeDistribution of the different pots.
+
+To deploy the contracts locally
 
 ```bash
 yarn hardhat deploy
@@ -108,14 +133,14 @@ yarn hardhat deploy
 To deploy on goerli tesnet you need to create first a subscription on [Chainlink VRF](https://vrf.chain.link/goerli).
 Add the newly created subscriptionId to your helper-hardhat-config.js.
 
-To deploy the contract on goerli tesnet
+To deploy the contracts on goerli tesnet
 
 ```bash
 yarn hardhat deploy --network goerli
 ```
 
-Once the contract is deployed on goerli, you need to add it as a consumer to your subscription.
-You also need to register your contract to the [Chainlink keeper](https://automation.chain.link/goerli) (Don't forget to claim some LINK by using the [chainlink faucet](https://faucets.chain.link/)).
+Once the contracts are deployed on goerli, you need to add them as a consumer to your subscription.
+You also need to register your contracts to the [Chainlink keeper](https://automation.chain.link/goerli) (Don't forget to claim some LINK by using the [chainlink faucet](https://faucets.chain.link/)).
 
 To update the front end repository with the newly deployed contracts (You need to pull the [frontend](https://github.com/jrchain/smart-lottery-front-end) and set your `FRONT_END_FOLDER` first)
 

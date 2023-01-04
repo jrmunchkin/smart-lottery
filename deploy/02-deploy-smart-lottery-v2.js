@@ -38,8 +38,9 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
 
   const gasLane = networkConfig[chainId]["gasLane"];
   const callbackGasLimit = networkConfig[chainId]["callbackGasLimit"];
-  const usdEntranceFee = networkConfig[chainId]["usdEntranceFee"];
+  const usdTicketFee = networkConfig[chainId]["usdEntranceFee"];
   const interval = networkConfig[chainId]["interval"];
+  const prizeDistribution = networkConfig[chainId]["prizeDistribution"];
 
   const args = [
     vrfCoordinatorV2Address,
@@ -47,12 +48,13 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
     gasLane,
     callbackGasLimit,
     ethUsdPriceFeed,
-    usdEntranceFee,
+    usdTicketFee,
     interval,
+    prizeDistribution,
   ];
 
-  log("Deploying smart lottery...");
-  const smartLottery = await deploy("SmartLottery", {
+  log("Deploying smart lottery V2...");
+  const smartLotteryV2 = await deploy("SmartLotteryV2", {
     from: deployer,
     log: true,
     args: args,
@@ -62,7 +64,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
   if (developmentChains.includes(network.name)) {
     await vrfCoordinatorV2Mock.addConsumer(
       subscriptionId.toNumber(),
-      smartLottery.address
+      smartLotteryV2.address
     );
   }
 
@@ -71,10 +73,10 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
     process.env.ETHERSCAN_API_KEY &&
     process.env.VERIFY == "true"
   ) {
-    await verify(smartLottery.address, args);
+    await verify(smartLotteryV2.address, args);
   }
 
-  log("Smart lottery deployed");
+  log("Smart lottery V2 deployed");
 };
 
-module.exports.tags = ["all", "smartLottery"];
+module.exports.tags = ["all", "smartLotteryV2"];
