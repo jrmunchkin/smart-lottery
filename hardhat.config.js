@@ -1,6 +1,5 @@
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-etherscan");
-require("@nomiclabs/hardhat-vyper");
 require("hardhat-deploy");
 require("solidity-coverage");
 require("hardhat-gas-reporter");
@@ -15,9 +14,6 @@ const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY;
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: "0.8.17",
-  vyper: {
-    version: "0.3.7",
-  },
   defaultNetwork: "hardhat",
   networks: {
     goerli: {

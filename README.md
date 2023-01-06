@@ -1,9 +1,9 @@
 # Smart Lottery contract (SOLIDITY)
 
-**This is the SOLIDITY version of the repository, to switch to the VYPER version change to branch vyper** :point_up:
+**This is the SOLIDITY version of the repository, you also can find the [VYPER version](https://github.com/jrmunchkin/smart-lottery-vyper)**
 
 This is a repository to work with and create a lottery game name Smart Lottery in a javascript environment using hardhat.
-This is a backend repository, it also work with a [frontend repository](https://github.com/jrchain/smart-lottery-front-end). However you absolutly can use this repository without the frontend part.
+This is a backend repository, it also work with a [frontend repository](https://github.com/jrmunchkin/smart-lottery-front-end). However you absolutly can use this repository without the frontend part.
 
 ## Summary
 
@@ -67,7 +67,7 @@ Please install or have installed the following:
 1. Clone this repository
 
 ```
-git clone https://github.com/jrchain/smart-lottery
+git clone https://github.com/jrmunchkin/smart-lottery
 cd smart-lottery
 ```
 
@@ -93,9 +93,9 @@ You also can work with [Infura](https://infura.io/).
 
 You can find your `PRIVATE_KEY` from your ethereum wallet like [metamask](https://metamask.io/).
 
-You'll also want an [Etherscan API Key](https://etherscan.io/apis) to verify your smart contracts. Set it here `ETHERSCAN_API_KEY`. Also set `VERIFY` to true to verify it.
+You'll also want an [Etherscan API Key](https://etherscan.io/apis) to verify your smart contracts. Set it here `ETHERSCAN_API_KEY`.
 
-If you want to use it with the [frontend repository](https://github.com/jrchain/smart-lottery-front-end), You also can clone it and set your frontend path `FRONT_END_FOLDER`
+If you want to use it with the [frontend repository](https://github.com/jrmunchkin/smart-lottery-front-end), You also can clone it and set your frontend path `FRONT_END_FOLDER`
 
 the `UPDATE_FRONT_END` set to true will update your frontend with the last deployed contract.
 
@@ -142,7 +142,7 @@ yarn hardhat deploy --network goerli
 Once the contracts are deployed on goerli, you need to add them as a consumer to your subscription.
 You also need to register your contracts to the [Chainlink keeper](https://automation.chain.link/goerli) (Don't forget to claim some LINK by using the [chainlink faucet](https://faucets.chain.link/)).
 
-To update the front end repository with the newly deployed contracts (You need to pull the [frontend](https://github.com/jrchain/smart-lottery-front-end) and set your `FRONT_END_FOLDER` first)
+To update the front end repository with the newly deployed contracts (You need to pull the [frontend](https://github.com/jrmunchkin/smart-lottery-front-end) and set your `FRONT_END_FOLDER` first)
 
 ```bash
 yarn hardhat deploy --tags frontend

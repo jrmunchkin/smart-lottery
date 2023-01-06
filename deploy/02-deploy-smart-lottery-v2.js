@@ -70,8 +70,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
 
   if (
     !developmentChains.includes(network.name) &&
-    process.env.ETHERSCAN_API_KEY &&
-    process.env.VERIFY == "true"
+    process.env.ETHERSCAN_API_KEY
   ) {
     await verify(smartLotteryV2.address, args);
   }
